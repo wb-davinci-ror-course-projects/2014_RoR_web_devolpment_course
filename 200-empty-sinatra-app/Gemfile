@@ -15,3 +15,6 @@ gem 'rack-flash3', require: 'rack-flash'
 gem 'sinatra-footnotes'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'will_paginate', '~> 3.0.0'
+
+gem 'pry'
+gem 'awesome_print'
