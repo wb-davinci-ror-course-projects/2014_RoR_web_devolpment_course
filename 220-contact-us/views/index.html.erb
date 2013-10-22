@@ -1,1 +1,11 @@
-<!-- TODO: edit this file -->
+<h1>Contact Us</h1>
+
+<!-- TODO: write this part -->
+
+<hr>
+<h3>Messages so far:</h3>
+<ul>
+  <% Message.order(:id).each do |message| %>
+    <li><%= message.subject %></li>
+  <% end %>
+</ul>
