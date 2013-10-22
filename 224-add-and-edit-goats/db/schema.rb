@@ -11,6 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20131013200222) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "athletes", force: true do |t|
+    t.string  "name"
+    t.integer "class_year"
+  end
+
+  create_table "races", force: true do |t|
+    t.string  "name"
+    t.integer "num_meters"
+  end
+
+  create_table "racing_goats", force: true do |t|
+    t.string "name"
+    t.string "gender"
+    t.string "best_100m_time"
+    t.string "dietary_preference"
+  end
 
 end
