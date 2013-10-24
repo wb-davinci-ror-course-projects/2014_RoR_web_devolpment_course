@@ -11,17 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131024205330) do
+ActiveRecord::Schema.define(version: 20131024212857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "presidents", force: true do |t|
     t.string  "name"
+    t.integer "term_number"
     t.text    "biography"
     t.boolean "ended_term_early"
     t.string  "party"
-    t.string  "occupation_before_politics"
+    t.string  "former_occupation"
+    t.integer "birth_state_id"
+  end
+
+  create_table "states", force: true do |t|
+    t.string "name"
+    t.string "abbreviation"
   end
 
 end

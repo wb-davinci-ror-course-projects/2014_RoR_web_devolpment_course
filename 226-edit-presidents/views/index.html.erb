@@ -3,7 +3,10 @@
 <ul>
   <% @presidents.each do |president| %>
     <li>
-      <%= president.name %>
+      <a href="/presidents/<%= president.id %>">
+        #<%= president.term_number %>
+        <%= president.name %>
+      </a>
     </li>
   <% end %>
 </ul>
