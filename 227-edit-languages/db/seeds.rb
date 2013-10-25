@@ -1,6 +1,7 @@
 LanguageFamily.create! name: "Indo-European"
 LanguageFamily.create! name: "Malayo-Polynesian"
 LanguageFamily.create! name: "Niger-Congo"
+LanguageFamily.create! name: "Sino-Tibetan"
 
 Language.create! \
   name: "Swahili",
