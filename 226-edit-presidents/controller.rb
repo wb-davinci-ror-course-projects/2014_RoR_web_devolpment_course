@@ -5,6 +5,13 @@ get "/" do
   halt erb(:index)
 end
 
+get "/new_president" do
+  @president = President.new
+  halt erb(:edit)
+end
+
+# TODO: write POST handler to create president
+
 get "/presidents/:id" do
   id = params["id"]
   @president = President.find(id)
