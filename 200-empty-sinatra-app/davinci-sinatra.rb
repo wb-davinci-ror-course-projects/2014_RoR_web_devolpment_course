@@ -25,6 +25,9 @@ helpers do
   def protect_against_forgery?
     false
   end
+  def convert_to_model(object)
+    object.respond_to?(:to_model) ? object.to_model : object
+  end
 end
 
 # Comment this line to turn off Active Record SQL logging
