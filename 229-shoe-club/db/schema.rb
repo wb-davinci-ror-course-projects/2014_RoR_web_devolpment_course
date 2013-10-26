@@ -11,6 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20130805032349) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "customers", force: true do |t|
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "ship_speed"
+    t.string  "ship_address1"
+    t.string  "ship_city"
+    t.string  "ship_state"
+    t.string  "ship_zip_code"
+    t.boolean "bill_address_same_as_ship"
+    t.string  "bill_address1"
+    t.string  "bill_city"
+    t.string  "bill_state"
+    t.string  "bill_zip_code"
+  end
+
+  create_table "u_s_states", force: true do |t|
+    t.string "abbreviation"
+    t.string "name"
+  end
 
 end
