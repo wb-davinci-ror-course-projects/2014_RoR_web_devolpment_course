@@ -1,1 +1,11 @@
-<!-- TODO: edit this file -->
+<h1>Encyclopedia entries</h1>
+
+<ul>
+  <% @entries.each do |entry| %>
+    <li>
+      <a href="/<%= entry.word %>">
+        <%= entry.word %>
+      </a>
+    </li>
+  <% end %>
+</ul>
