@@ -1,12 +1,14 @@
 <h1>Patients</h1>
 
 <table border="1">
+
   <tr>
     <th>#</th>
     <th>Systolic</th>
     <th>Diastolic</th>
     <th></th>
   </tr>
+
   <% @patients.each do |p| %>
     <tr>
       <td><%= p.id %></td>
@@ -17,4 +19,14 @@
       </td>
     </tr>
   <% end %>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <a href="/new_patient">Add New</a>
+    </td>
+  </tr>
+
 </table>

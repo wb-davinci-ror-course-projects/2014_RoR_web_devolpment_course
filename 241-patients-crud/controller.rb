@@ -1,25 +1,13 @@
 require './davinci-sinatra.rb'
 
-get "/" do
-  @patients = Patient.order(:id)
-  halt erb(:index)
-end
+# TODO: write handler for GET / requests
 
-get "/patients/:id" do
-  id       = params["id"]
-  @patient = Patient.find(id)
-  halt erb(:edit)
-end
+# TODO: write handler for GET /patients/3, /patients/5, etc. requests
 
-post "/patients/:id" do
-  id                 = params["id"]
-  @patient           = Patient.find(id)
-  if params["commit"] == "Update"
-    @patient.systolic  = params["systolic"]
-    @patient.diastolic = params["diastolic"]
-    @patient.save!
-  elsif params["commit"] == "Delete"
-    @patient.destroy
-  end
-  redirect "/"
-end
+# TODO: write handler for POST /patients/3, /patients/5, etc. requests
+
+# TODO: write handler for POST /patients/3, /patients/5, etc. requests
+
+# TODO: write handler for GET /new_patient requests
+
+# TODO: write handler for POST /new_patient requests
