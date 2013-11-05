@@ -7,13 +7,15 @@ get "/" do
 end
 
 get "/recipe/:name" do
-  @recipe = Recipe.where(name: params[:name]).first
+  name = params["name"]
+  @recipe = Recipe.find_by(name: name)
   halt erb(:show)
 end
 
 get "/by-author/:name" do
-  author = Author.where(full_name: params[:name]).first
-  @recipes = Recipe.where(author_id: author.id).all
+  name = params["name"]
+  author = Author.find_by(full_name: name)
+  @recipes = Recipe.where(author_id: author.id)
   @title = "Recipes by #{author.full_name}"
   halt erb(:index)
 end
