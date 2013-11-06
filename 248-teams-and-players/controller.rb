@@ -1,12 +1,12 @@
 require './davinci-sinatra.rb'
 
 get "/" do
-  @players = Player.order(:name)
+  @teams = Team.order(:name)
   halt erb(:index)
 end
 
-get "/players/:id" do
-  id = params["id"]
-  @player = Player.find(id)
+get "/teams/:name" do
+  name = params["name"]
+  @team = Team.find_by(name: name)
   halt erb(:show)
 end
