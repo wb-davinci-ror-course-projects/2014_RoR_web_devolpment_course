@@ -16,21 +16,26 @@ post "/login" do
   # and either log them in, saving their user ID to the session,
   # and redirect to /accounts, or set an error message in @error
   # and re-render login.html.erb.
+
+  redirect "/accounts"
 end
 
 get "/accounts" do
+  @user = User.find(1) # TODO: Remove this line
   # TODO: Load the user based on the id saved to the session
 
   halt erb(:accounts)
 end
 
 get "/location" do
+  @user = User.find(1) # TODO: Remove this line
   # TODO: Load the user based on the id saved to the session
 
   halt erb(:location)
 end
 
 get "/rates" do
+  @user = User.find(1) # TODO: Remove this line
   # TODO: Load the user based on the id saved to the session
 
   halt erb(:rates)
