@@ -9,10 +9,10 @@ class MainController < ApplicationController
   end
 
   def login_post
-    username = params[:username]
-    password = params[:password]
+    username = params["username"]
+    password = params["password"]
 
-    found_user = User.where(username: username).first
+    found_user = User.find_by(username: username)
 
     if found_user == nil
       flash.now[:error] = "Incorrect username"
@@ -27,17 +27,17 @@ class MainController < ApplicationController
   end
 
   def accounts
-    @user = User.where(id: session[:user_id]).first
+    @user = User.find_by(id: session[:user_id])
     render :accounts and return
   end
 
   def location
-    @user = User.where(id: session[:user_id]).first
+    @user = User.find_by(id: session[:user_id])
     render :location and return
   end
 
   def rates
-    @user = User.where(id: session[:user_id]).first
+    @user = User.find_by(id: session[:user_id])
     render :rates and return
   end
 
