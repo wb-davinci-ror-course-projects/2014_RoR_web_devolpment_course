@@ -18,7 +18,11 @@
         <td><%= ad.duration %></td>
         <td><a href="/show_ad/<%= ad.id %>">Show</a></td>
         <td><a href="/edit_ad/<%= ad.id %>">Edit</a></td>
-        <td><a href="/destroy_ad/<%= ad.id %>">Destroy</a></td>
+        <td>
+          <a href="/destroy_ad/<%= ad.id %>" data-confirm="Are you sure?">
+            Destroy
+          </a>
+        </td>
       </tr>
     <% end %>
   </tbody>
