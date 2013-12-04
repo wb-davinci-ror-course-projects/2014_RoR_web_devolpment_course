@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if flash[:error] != nil %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
