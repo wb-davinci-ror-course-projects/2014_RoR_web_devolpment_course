@@ -1,8 +1,8 @@
 <h1>Editing ad</h1>
 
-<%== error_messages_for @ad %>
+<%= error_messages_for @ad %>
 
-<%== form_tag @ad, method: "PUT" do %>
+<%= form_tag @ad, method: "PUT" do %>
   <div class="field">
     <%= label_tag :company_name %><br>
     <%= text_field_tag :company_name, @ad.company_name %>
