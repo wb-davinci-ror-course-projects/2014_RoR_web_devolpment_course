@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<% if @admin %>
+  You are logged in as <b><%= @admin.username %></b>.
+  <a href="/admin/logout">Logout</a>
+  <hr>
+<% end %>
+
+<% flash.keys.each do |key| %>
+  <div class="flash flash-<%= key %>">
+    <%= flash[key] %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
