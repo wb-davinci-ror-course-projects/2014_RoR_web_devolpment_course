@@ -1,3 +1,25 @@
+
 <h1>UFO sightings</h1>
 
-<!-- TODO: write this -->
+<h2>2001-07-15, Cateret, New Jersey</h2>
+<p>At least 15 people, including 2 police officers, stopped their cars along the New Jersey Turnpike to view light formations in the night sky.</p>
+
+<h2>2004-03-05, Mexico</h2>
+<p>A drug-smuggling air-patrol recorded on infrared camera what some claimed to be UFOs. The footage was released by Jaime Maussan. The objects were however convincingly correlated with the burn-off flares of oil platforms.</p>
+
+<h2>2006-11-07, Chicago, Illinois</h2>
+<p>United Airlines employees and pilots claimed sightings of a saucer-shaped, unlit craft hovering over a Chicago O'Hare Airport terminal, before shooting up vertically</p>
+
+<h1>UFO sightings</h1>
+<% 3.times do |x| %>
+  <h2> title of event </h2>
+  <p> description of event</p>
+<% end %>
+
+<h1>UFO sightings</h1>
+
+<% Sighting.order(:date).each do |d| %>
+  <h2><%= d.date %></h2>
+  <p><%= d.description %></p>
+<% end %>
+
