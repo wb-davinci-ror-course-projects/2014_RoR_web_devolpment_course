@@ -1,6 +1,3 @@
-
-
-<h1>World cities</h1>
 <table class="table">
  <tr>
     <th>City name </th>
@@ -8,15 +5,14 @@
     <th>Time zone </th>
     <th>Population</th>
   </tr>
-<tr>
+  <tr>
     <% WorldCity.order(:city).each do |w| %>
-    <td><%= w.city %></td>
-    <td><%= w.flag %>></td>
-    <td><%= w.time %></td>
-    <td><%= w.population %></td>
+      <td><%= w.city %></td>
+      <td><img src="<%= w.flag %>"></td>
+      <td><%= w.time %></td>
+      <td><%= w.population %></td>
   </tr>
-  <% end %>
-  
+    <% end %>
 <h1>World cities</h1>
 <table class="table">
   <tr>
