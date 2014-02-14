@@ -1,27 +1,12 @@
 <h1>Multiple choice test</h1>
-<h2>Problem #1</h2>
-  <p>What is 4 + 5?</p>
+<% MultiTest.order(:problem).each do |x| %>
+<h2><%= x.problem %></h2>
+  <p><%= x.question %></p>
   <ul>
-    <li>A. 45</li>
-    <li>B. 11</li>
-    <li>C. 1</li>
-    <li>D. 9</li>
+    <li><%= x.answer1 %></li>
+    <li><%= x.answer2 %></li>
+    <li><%= x.answer3 %></li>
+    <li><%= x.answer4 %></li>
   </ul>
+<% end %>
 
-<h2>Problem #2</h2>
-  <p>What is 3 x 9?</p>
-  <ul>
-    <li>A. 22</li>
-    <li>B. 27</li>
-    <li>C. 29</li>
-    <li>D. 12</li>
-  </ul>
-
-<h2>Problem #3</h2>
-  <p>What is 13 - 9?</p>
-  <ul>
-    <li>A. 11</li>
-    <li>B. 22</li>
-    <li>C. 14</li>
-    <li>D. 4</li>
-  </ul>
