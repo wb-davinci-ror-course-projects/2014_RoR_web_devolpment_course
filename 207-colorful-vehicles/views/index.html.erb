@@ -3,3 +3,10 @@
 <div style="background-color:#77f">
   <img src="/images/car.png">
 </div>
+<% Color.order(:id).each do |i| %>
+
+    <%= i.id %>
+    <%= i.name %>
+    <%= i.html_color_code %>
+
+<% end %>
