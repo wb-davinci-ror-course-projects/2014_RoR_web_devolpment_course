@@ -5,7 +5,7 @@ get "/" do
 end
 
 get "/elements/:e" do
-  id = params[:id]
+  id = params[:e]
   @element = Element.find(id)
   halt erb(:show)
 end
