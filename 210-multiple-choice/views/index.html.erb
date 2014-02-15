@@ -1,12 +1,16 @@
 <h1>Multiple choice test</h1>
-<% MultiTest.order(:problem).each do |x| %>
-<h2><%= x.problem %></h2>
-  <p><%= x.question %></p>
+<% MultiTest.order(:problem).each do |p| %>
+<h2><%= p.problem %></h2>
+  <p><%= p.question %></p>
   <ul>
-    <li><%= x.answer1 %></li>
-    <li><%= x.answer2 %></li>
-    <li><%= x.answer3 %></li>
-    <li><%= x.answer4 %></li>
+    <% x = 0 %>
+    <% x = x + 1 %>
+    <% x = x.to_s %>
+    <li><%= ('p.answer'+'x') %></li> 
   </ul>
+  
 <% end %>
+
+
+
 
