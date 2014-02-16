@@ -2,24 +2,23 @@
 
 <table class="table" table border="1">
   <tr>
-    <th><h2>City name</h2></th>
-      <td><h3>London<h3></td>
-      <td><h3>Paris<h3></td>
-      <td><h3>Shanghai<h3></td>
+    <th><h2>City name</h2></th>   
+          <% WorldCity.order(:name).each do |w| %>
+            <td><h3><%= w.name %><h3></td>
+          <% end %>
   </tr>
-
   <tr>
     <th><h2>Country</h2></th>
-      <td><h3><img src="/images/uk.png" height="18" width="33"> United Kingdom<h3></td>
-      <td><h3><img src="/images/france.png" height="23" width="32"> France<h3></td>
-      <td><h3><img src="/images/prc.png" height="23" width="32"> China<h3></td>
+          <% WorldCity.order(:country_flag_filename).each do |w| %>
+            <td><h3><img src="/images/<%= w.country_flag_filename %>" height="18" width="33"> 
+            <%= w.name %><h3></td>
+          <% end %>     
   </tr>   
-  
+
   <tr>
     <th><h2>More Details</h2></th>
-    <% WorldCity.order(:id).each do |w| %>
-      <td><h3><a href="/cities/<%= w.id %>">Details<h3></td>
-    <% end %>
-     
+      <% WorldCity.order(:id).each do |w| %>
+        <td><h3><a href="/world_cities/<%= w.id %>">Details<h3></td>
+      <% end %>
   </tr>   
 </table>
