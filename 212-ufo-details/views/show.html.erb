@@ -1,7 +1,10 @@
-<a href="/index">Back to all sightings</a>
+<a href="/">Back to all sightings</a>
 
-<%= @sighting.when_seen %>
-<%= @sighting.location %>
-<%= @sighting.description %>
+<h1>Sighting details</h1>
 
+  <ul class="list-unstyled">
+    <p><li><b>When: </b><%= @sighting.when_seen %></li></p>
+    <p><li><b>Where: </b><%= @sighting.location %></li></p>
+    <p><li><b>Description: </b><%= @sighting.description %></li></p>
+  </ul>
 
