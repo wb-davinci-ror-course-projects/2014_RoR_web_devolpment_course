@@ -17,8 +17,9 @@
   
   <tr>
     <th><h2>More Details</h2></th>
-      <td><h3><a href="/London">Details<h3></td>
-      <td><h3><a href="/Paris">Details<h3></td>
-      <td><h3><a href="/Shanghai">Details<h3></td>
+    <% WorldCity.order(:id).each do |w| %>
+      <td><h3><a href="/cities/<%= w.id %>">Details<h3></td>
+    <% end %>
+     
   </tr>   
 </table>
