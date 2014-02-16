@@ -1,17 +1,22 @@
-<h1><%= @city.name %></h1>
-
-Example grid:
-<br>
-
+<h1><%= @city.name %><i> "<%= @city.nickname %> "</i></h1>
 <div class='row'>
-  <div class='col-md-4'>.</div>
-  <div class='col-md-4'>.</div>
-  <div class='col-md-4'>.</div>
-</div>
-<br>
+  <div class='col-md-4'><h2>Country</h2>
+    <img src="/images/<%= @city.country_flag_filename %>">
+      <%= @city.country %>
+    <br></br>
+    <h2>Official URL</h2>
+      <a href="<%= @city.official_url %>"><%= @city.official_url %></a>
+  </div>
 
-<div class='row'>
-  <div class='col-md-4'>.</div>
-  <div class='col-md-4'>.</div>
-  <div class='col-md-4'>.</div>
+  <div class='col-md-4'><h2>Time zone</h2>
+    UTC+0<%= @city.time_zone_offset %>00
+  </div>
+  
+  <div class='col-md-4'><h2>Population</h2>
+   <%= @city.population_in_millions %> million
+   <br></br>
+   <h2>River</h2>
+    <%= @city.river %>
+  </div>
 </div>
+

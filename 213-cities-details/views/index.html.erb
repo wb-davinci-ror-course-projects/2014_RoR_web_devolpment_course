@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <th><h2>Country</h2></th>
-          <% WorldCity.order(:country_flag_filename).each do |w| %>
+          <% WorldCity.order(:id).each do |w| %>
             <td><h3><img src="/images/<%= w.country_flag_filename %>" height="18" width="33"> 
             <%= w.name %><h3></td>
           <% end %>     
