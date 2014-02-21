@@ -11,4 +11,11 @@ get "/lines/:id" do
   halt erb(:edit)
 end
 
-# TODO: write POST handler
+post "/lines/:id" do
+  id      =params["id"]
+  @new    =BraceletLine.find(id)
+  @new.font_size    =params["font_size"]
+  @new.text         =params["text"]
+  @new.save!        
+  redirect "/"
+end
