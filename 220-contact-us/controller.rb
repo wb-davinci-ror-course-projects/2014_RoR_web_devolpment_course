@@ -4,4 +4,11 @@ get "/" do
   halt erb(:index)
 end
 
-# TODO: write POST handler
+post "/contact_us" do
+  message    = Message.new
+  message.subject = params["subject"]
+  message.body    =params["body"]
+  message.save!
+  redirect "/"
+end
+
