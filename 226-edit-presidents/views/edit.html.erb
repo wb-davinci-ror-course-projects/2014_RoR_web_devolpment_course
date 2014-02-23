@@ -1,3 +1,37 @@
 <h1>Edit president</h1>
 
-<!-- TODO: write this part to match the mockup -->
+  <%= label_tag "name", "Full name" %><br>
+    <%= text_field_tag "name", @president.name, size: 20 %>
+    
+<h3>Biography</h3>
+  <%= text_area_tag "biography", @president.biography, rows: 2, cols: 20 %><br></br>
+  
+<h3>Ended term early</h3>
+  <%= check_box_tag "ended_term_early", "on", @president.ended_term_early %><br></br>
+  
+
+
+<h3>Party</h3>
+  <%= radio_button_tag "party", "democrat", @president.party == "democrat" %>&nbsp
+    <%= label_tag "party", "Democrat" %>&nbsp
+  <%= radio_button_tag "party", "republican", @president.party == "republican" %>&nbsp
+    <%= label_tag "party", "Republican" %>&nbsp
+  <%= radio_button_tag "party", "whig", @president.party == "whig" %>&nbsp
+    <%= label_tag "party", "Whig" %><br>
+    
+<%= label_tag "former_occupation" %><br>
+  <%= select_tag "former_occupation", 
+  options_for_select(
+  ["clothing retailer", "farmer", "lawyer", "sailor", "soldier"],
+  @president.former_occupation),
+  prompt: "Choose occupation..." %>
+<br>
+<%= label_tag "birth_state_id" %><br>
+  <%= select_tag "birth_state_id", 
+  options_from_collection_for_select(
+  State.all, :id,   :name,
+  @president.birth_state_id), 
+  prompt: "Select state" %>
+  
+<br></br>
+<%= submit_tag "Revise history" %>
