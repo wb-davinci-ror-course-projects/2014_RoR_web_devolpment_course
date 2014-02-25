@@ -2,4 +2,27 @@
 
 <h1>Page of 3 of 4: Billing</h1>
 
-<!-- TODO: write this part to match the mockup -->
+    <%= check_box_tag "bill_address_same_as_ship", "on", 
+    @customer.bill_address_same_as_ship %>
+          
+    <%= label_tag "bill_address_same_as_ship", "Same as shipping address" %><br>
+
+    <%= label_tag "bill_address1", "Address1" %><br>
+      <%= text_field_tag "bill_address1", "", size: 15 %><br>
+
+    <%= label_tag "bill_city", "City" %><br>
+      <%= text_field_tag "bill_city", "", size: 15 %><br></br>
+
+    <%= label_tag "bill_state", "State" %><br>
+      <%= select_tag "bill_state", 
+      options_from_collection_for_select(USState.all, :abbreviation,
+      :name), prompt: "Choose state..." %><br>
+
+    <%= label_tag "bill_zip_code", "Zip code" %><br>
+      <%= text_field_tag "bill_zip_code", "", size: 15 %><br></br>
+
+  <%= submit_tag "Go back" %> &nbsp or &nbsp
+   
+  <%= submit_tag "Continue" %>
+ 
+

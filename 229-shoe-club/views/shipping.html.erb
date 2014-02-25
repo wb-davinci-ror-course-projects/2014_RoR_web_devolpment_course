@@ -21,8 +21,8 @@
 
     <%= label_tag "ship_state", "State" %><br>
       <%= select_tag "ship_state", 
-      options_from_collection_for_select(USState.order(:id), :id,
-      :abbreviation), prompt: "Choose state..." %><br>
+      options_from_collection_for_select(USState.all, :abbreviation,
+      :name), prompt: "Choose state..." %><br>
 
     <%= label_tag "ship_zip_code", "Zip code" %><br>
       <%= text_field_tag "ship_zip_code", "", size: 15 %><br></br>

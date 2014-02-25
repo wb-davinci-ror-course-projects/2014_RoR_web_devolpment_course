@@ -51,6 +51,7 @@ post "/shipping" do
   elsif params[:commit] == "Go back"
     redirect "/shipping"  
   end
+end
 
 get "/billing" do
   @customer = Customer.find(1)
@@ -62,12 +63,32 @@ end
 post "/billing" do
   @customer = Customer.find(1)
   @u_s_states = USState.order(:name).all
-
-  # TODO: If Go Back was clicked, go back to the previous page
-  # TODO: If Continue was clicked, save the entered info and either go on
-  #       to next page, or show validation errors on this same page.
-  #       (If same_as_ship checkbox was checked, use the info in the shipping
-  #       fields for the billing fields).
+  @customer.bill_address_same_as_ship = params[:bill_address_same_as_ship]
+  if @customer.bill_address_same_as_ship == true
+    @customer.bill_address1   = @customer.ship_address1 
+    @customer.bill_city = @customer.ship_city
+    @customer.bill_state = @customer.ship_state
+    @customer.bill_zip_code = @customer.ship_zip_code
+    @customer.save
+    redirect "/review"
+  if @customer.bill_address_same_as_ship != true
+    false
+  end  
+  end
+    @customer.bill_address1   = params[:bill_address1]
+    @customer.bill_city = params[:bill_city]
+    @customer.bill_state = params[:bill_state]
+    @customer.bill_zip_code = params[:bill_zip_code]
+  
+  if params[:commit] == "Continue"
+    if @customer.save == true
+      redirect "/review"
+    else
+      halt erb(:billing)
+    end
+  elsif params[:commit] == "Go back"
+    redirect "/billing"  
+  end
 end
 
 get "/review" do
