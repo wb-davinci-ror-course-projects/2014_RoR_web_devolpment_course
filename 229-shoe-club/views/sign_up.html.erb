@@ -2,4 +2,13 @@
 
 <h1>Page 1 of 4: Sign up</h1>
 
-<!-- TODO: write this part to match the mockup -->
+<%= label_tag "first_name", "First name" %><br>
+  <%= text_field_tag "first_name", "", size: 15 %><br>
+
+<%= label_tag "last_name", "Last name" %><br>
+  <%= text_field_tag "last_name", "", size: 15 %><br></br>
+
+<%= submit_tag "Go back" %>
+  &nbsp or &nbsp
+<%= submit_tag "Continue" %>
+
