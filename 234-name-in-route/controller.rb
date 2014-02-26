@@ -5,6 +5,11 @@ get "/" do
   halt erb(:index)
 end
 
-# TODO: write GET handler to serve show.html.erb with @entry set
-# to the correct Encyclopedia Entry for routes like /albatross 
-# and /jay
+get "/:word" do
+  w = params[:word]
+  @entry = EncyclopediaEntry.find_by(word: w)
+  halt erb(:show)
+end
+
+
+ 
