@@ -30,7 +30,6 @@ end
 get "/shipping" do
   @customer = Customer.find(1)
   @u_s_states = USState.order(:name).all
-  
   halt erb(:shipping)
 end
 
@@ -56,7 +55,6 @@ end
 get "/billing" do
   @customer = Customer.find(1)
   @u_s_states = USState.order(:name).all
-
   halt erb(:billing)
 end
 
@@ -64,15 +62,15 @@ post "/billing" do
   @customer = Customer.find(1)
   @u_s_states = USState.order(:name).all
   @customer.bill_address_same_as_ship = params[:bill_address_same_as_ship]
-  if @customer.bill_address_same_as_ship == true
-    @customer.bill_address1   = @customer.ship_address1 
-    @customer.bill_city = @customer.ship_city
-    @customer.bill_state = @customer.ship_state
-    @customer.bill_zip_code = @customer.ship_zip_code
-    @customer.save
-    redirect "/review"
-  if @customer.bill_address_same_as_ship != true
-    false
+  if  @customer.bill_address_same_as_ship == true
+      @customer.bill_address1   = @customer.ship_address1 
+      @customer.bill_city = @customer.ship_city
+      @customer.bill_state = @customer.ship_state
+      @customer.bill_zip_code = @customer.ship_zip_code
+      @customer.save
+      redirect "/review"
+  if  @customer.bill_address_same_as_ship != true
+      false
   end  
   end
     @customer.bill_address1   = params[:bill_address1]
