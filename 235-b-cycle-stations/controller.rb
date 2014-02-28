@@ -6,22 +6,24 @@ get "/" do
 end
 
 get "/existing" do
-  # TODO: Assign to @stations variable
+  @stations = Station.where(status: "existing")
   halt erb(:index)
 end
 
 get "/private" do
-  # TODO: Assign to @stations variable
+  @stations = Station.where(property_type: "private")
   halt erb(:index)
 end
 
-get "/zip/:zip_code" do
-  # TODO: Assign to @stations variable
+get "/zip/:zip_code" do 
+  x = params["zip_code"]
+  @stations = Station.where(zip_code: x)
   halt erb(:index)
 end
 
-get "/street/Broadway" do
-  # TODO: Assign to @stations variable
+get "/street/:street" do
+  street = params["street"]
+  @stations = Station.where("address1 ilike ?", "%Broadway%")
   halt erb(:index)
 end
 
