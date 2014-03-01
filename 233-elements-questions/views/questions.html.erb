@@ -7,29 +7,25 @@
 
 <p class='question'>2. Print out the name for the element with number of 27.</p>
 
-  <% @elements.each do %> &nbsp
-  <% e = Element.find_by(number: 27) %>
-  <li style="color: red"><%= e.name %></li>
-  <% break %>
-  <% end %>
+
+  <%= Element.find_by(number: 27).name %>
+
+
 <br>
 <p class='question'>3. Print the name of the element with the lowest melting point.</p>
 
-  <% @elements.each do %> &nbsp
-  <% e = Element.order(:melting_point).first %>
-  <li style="color: red"><%= e.name %></li>
-  <% break %>
-  <% end %>
+
+  <%= Element.order(:melting_point).first.name %>
+  
 <br>
 
 
 <p class='question'>4. Print the name of the element with the highest melting point. Hint: you'll need to filter out the NULL records with <code>where("melting_point is not null")</code>.</p>
 
-  <% @elements.each do %> &nbsp
-  <% e = Element.order(:melting_point).reverse_order.first %>
-  <li style="color: red"><%= e.name %></li>
-  <% break %>
-  <% end %>
+
+  <%= Element.order(:melting_point).reverse_order.first.name %>
+
+
 <br>
 
 <p class='question'>5. Print out all the element names that end with the letters ium.  (e.g. Calcium)</p>
