@@ -4,12 +4,24 @@ get "/" do
   halt erb(:login)
 end
 
-# TODO: Write a POST handler that either:
-#   1. Shows the login page again with an error "Unknown username"
-#   2. Or shows the login page again with the error "Wrong pin number"
-#      (Bonus: pre-fill the username that the user entered last time)
-#   3. Or redirects to /success
+post '/' do
+  
+  user = nil
+  if user == nil
+  @error = "unknown user"
+  @old_username = params[:username]
+  @old_pin_number = params[:pin_number]
+  halt erb(:login)
+
+  elsif User.find_by(username: params["username"]) != nil
+  redirect "/success"
+  
+  end
+end
 
 get "/success" do
   halt erb(:success)
-end
+end 
+
+
+
