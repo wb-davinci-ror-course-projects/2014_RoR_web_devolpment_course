@@ -21,13 +21,15 @@ get "/zip/:zip_code" do
   halt erb(:index)
 end
 
-get "/street/:street" do
-  street = params["street"]
+get "/street/Broadway" do
+  substring = params["substring"]
   @stations = Station.where("address1 ilike ?", "%Broadway%")
+  halt erb(:index)
+end  
+
+get "/street/17th" do
+  substring = params["substring"]
+  @stations = Station.where("address1 ilike ?", "%17th%")
   halt erb(:index)
 end
 
-get "/street/17th" do
-  # TODO: Assign to @stations variable
-  halt erb(:index)
-end
