@@ -17,7 +17,7 @@ post "/new_goat" do
   @goat.best_100m_time     = params["best_100m_time"]
   @goat.dietary_preference = params["dietary_preference"]
   @goat.save!
-  redirect "/"
+  redirect "/goats/#{@goat.id}"
 end
 
 get "/goats/:id" do
@@ -34,5 +34,5 @@ post "/goats/:id" do
   @goat.best_100m_time     = params["best_100m_time"]
   @goat.dietary_preference = params["dietary_preference"]
   @goat.save!
-  redirect "/"
+  redirect "/goats/#{id}"
 end

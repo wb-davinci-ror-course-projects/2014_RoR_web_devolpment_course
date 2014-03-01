@@ -20,7 +20,11 @@
 
 <p>
   Browse by author:
-  <ul>
+    <ul>
+      <% @books.each do |b| %>
+        <li> <a href="/author/<%= b.author %>"><%= b.author %></a></li>
+      <% end %>
+-------------
     <li>
       <a href="/author/Flanagan">Flanagan</a>
     </li>
