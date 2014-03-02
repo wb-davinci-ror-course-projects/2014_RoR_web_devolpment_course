@@ -1,6 +1,5 @@
 
-<%= @book.author %>
-<h2>Books by Flanagan</h2>
+<h2><%= @header %></h2>
 
 <table class="table">
   <tr>
@@ -8,11 +7,16 @@
     <th>Author</th>
     <th>Pusblished</th>
   </tr>
-<tr>
-<td><a href="/">The Ruby Programming Language</a>
-</td>
-<td> flanagan
-</td>
-</tr>
 
+  <% @books.each do |b| %>
+    <tr>
+      <td>
+        <a href="/isbn/<%= b.isbn %>">
+          <%= b.title %>
+        </a>
+      </td>
+      <td><%= b.author %></td>
+      <td><%= b.publication_year %></td>
+    </tr>
+  <% end %>
 </table>

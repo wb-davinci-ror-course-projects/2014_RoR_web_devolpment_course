@@ -1,1 +1,17 @@
-<!-- TODO: write view to match the mockup -->
+<h2>Book details</h2>
+
+<% @books.each do |b| %>
+
+  <h2>Title</h2>
+    <p><%= b.title %></p>
+
+  <h2>Author</h2>
+    <p><%= b.author %></p>
+
+  <h2>ISBN</h2>
+    <p><%= b.isbn %></p>
+
+  <h2>Publication year</h2>
+    <p><%= b.publication_year %></p>
+
+<% end %>

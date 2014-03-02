@@ -1,3 +1,4 @@
+
 <h1>Browse books</h1>
 
 <p>
@@ -17,16 +18,11 @@
     </li>
   </ul>
 </p>
-
 <p>
   Browse by author:
     <ul>
-      <% @books.each do |b| %>
-        <li> <a href="/author/<%= b.author %>"><%= b.author %></a></li>
-      <% end %>
--------------
     <li>
-      <a href="/author/Flanagan">Flanagan</a>
+      <a href="/author/<%= author = "Flanagan" %>">Flanagan</a>
     </li>
     <li>
       <a href="/author/McFarland">McFarland</a>
