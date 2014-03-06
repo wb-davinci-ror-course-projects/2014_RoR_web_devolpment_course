@@ -4,7 +4,7 @@
   <% @players.each do |player| %>
     <li>
       <a href="/players/<%= player.id %>">
-        <%= player.name %> is on the <%= player.team.name %>
+        <%= player.name %> is on the <%= Team.find_by(id: player.team_id).name %>
       </a>
     </li>
   <% end %>
