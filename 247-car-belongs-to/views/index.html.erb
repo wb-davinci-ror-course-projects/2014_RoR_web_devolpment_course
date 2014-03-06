@@ -1,5 +1,7 @@
 <% @cars.each do |car| %>
   <h2>
-    Who has the <%= car.model %>?
+    <% if car.member_id != nil %>
+      <%= Member.find_by(id: Car.where(member_id: car.member_id)).name %> owns the <%= car.model %>
+    <% end %>
   </h2>
 <% end %>
