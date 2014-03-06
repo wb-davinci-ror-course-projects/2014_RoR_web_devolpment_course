@@ -5,18 +5,12 @@ get "/" do
   halt erb(:index)
 end
 
-get "/new_goat" do
-  @goat = RacingGoat.new
-  halt erb(:edit)
-end
-
-post "/new_goat" do
+post "/edit" do
   @goat                    = RacingGoat.new
   @goat.name               = params["name"]
   @goat.gender             = params["gender"]
   @goat.best_100m_time     = params["best_100m_time"]
   @goat.dietary_preference = params["dietary_preference"]
-  raise @goat.inspect
   if @goat.save == true
     redirect "/"
   else

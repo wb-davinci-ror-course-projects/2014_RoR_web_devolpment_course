@@ -5,4 +5,7 @@
 <p>
   <b>Name</b><br>
   <%= @player.name %>
+  is on the
+  <%= Team.find(@player.team_id).name %>
+  team
 </p>

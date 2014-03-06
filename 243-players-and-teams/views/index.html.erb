@@ -5,6 +5,9 @@
     <li>
       <a href="/players/<%= player.id %>">
         <%= player.name %>
+        is on the 
+        <%= Team.find(player.team_id).name %>
+        team
       </a>
     </li>
   <% end %>
