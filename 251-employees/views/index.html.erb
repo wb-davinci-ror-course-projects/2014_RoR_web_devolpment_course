@@ -11,21 +11,28 @@
   </tr>
 
   <% @employees.each do |e| %>
-    <tr>
-      <td><%= e.id %></td>
-      <td><%= e.first_name %></td>
-      <td><%= e.last_name %></td>
-      <td>TODO</td>
-    </tr>
+    <% if e.company_id != nil %>
+      <tr>
+        <td><%= e.id %></td>
+        <td><%= e.first_name %></td> 
+        <td><%= e.last_name %></td>
+        <td><%= e.company.name %>
+        <%= e.company.stock_symbol %></td>  
+      </tr>
+    <% end %>
   <% end %>
-
+  
   <tr>
     <td>(new)</td>
     <td><%= text_field_tag "first_name", @new_employee.first_name,
       size: 10 %></td>
+      
     <td><%= text_field_tag "last_name", @new_employee.last_name,
       size: 10 %></td>
-    <td>TODO</td>
+      
+    <td><%= select_tag "name", options_from_collection_for_select(Company.order(:id), :id,
+     :name, @new_employee.company_id), prompt: "Select a company name..." %></td>
+     
     <td><%= submit_tag "Add" %></td>
   </tr>
 
