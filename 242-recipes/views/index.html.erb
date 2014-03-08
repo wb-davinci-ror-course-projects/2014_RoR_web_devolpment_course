@@ -1,16 +1,51 @@
+<% if @by_author == nil %>
 <h1><%= @title %></h1>
-
-<table class="table">
+ <table class="table">
   <tr>
     <th>Name</th>
+    <th>Author</th>
   </tr>
+  
   <% @recipes.each do |recipe| %>
-    <tr>
+  <tr>
       <td>
         <a href="/recipe/<%= recipe.name %>">
           <%= recipe.name %>
-        </a>
+        </a>  
       </td>
-    </tr>
+      
+      <td>
+          <% Author.where(id: recipe.author_id).each do |a| %>
+        <a href="/by_author/<%= a.first_name %>">
+            <%= a.first_name %>
+        </a>  
+      </td>
+          <% end %>
+  <% end %>
+  </tr>
+</table>
+
+<% else %>
+
+<h1><%= @title %></h1>
+ <table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Author</th>
+  </tr>
+  <% @recipes.where(author_id: @by_author.id).each do |recipe| %>
+  <tr>
+      <td>
+        <a href="/recipe/<%= recipe.name %>">
+          <%= recipe.name %>
+        </a>  
+      </td>
+      <td>
+        <a href="/by_author/<%= @by_author.first_name %>">
+          <%= @by_author.first_name %>
+        </a> 
+      </td>
+  </tr>  
   <% end %>
 </table>
+<% end %>
