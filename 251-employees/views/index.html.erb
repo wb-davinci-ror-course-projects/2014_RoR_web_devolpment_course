@@ -12,16 +12,16 @@
 
   <% @employees.each do |e| %>
       <tr>
+        <% company = Company.find_by(id: e.company_id) %>
+        <% if company != nil %>
         <td><%= e.id %></td>
         <td><%= e.first_name %></td> 
         <td><%= e.last_name %></td>
-          <% company = Company.find_by(id: e.company_id) %>
-            <% if company == nil %>
-              <% else %>
-                <td><%= company.name %>
-                   (<%= company.stock_symbol %>)
-                </td>
-            <% end %> 
+        <td><%= company.name %>
+          (<%= company.stock_symbol %>)   
+          <% else %>
+        </td>
+        <% end %> 
       </tr>
     <% end %>
   <tr>

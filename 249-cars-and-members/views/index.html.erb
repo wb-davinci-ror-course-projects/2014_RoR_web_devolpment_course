@@ -1,7 +1,60 @@
-<% @members.each do |member| %>
-  <h2><%= member.name %>'s cars:</h2>
-  <!-- Write code to generate <ul> list here or (None) -->
-<% end %>
 
-<h2>No one's cars:</h2>
-<!-- Write code to generate <ul> list here -->
+
+Print name in h2
+  Print each of the cars owned by 
+  If they don't have a car print (None)
+If a car doesn't have an owner
+  Print car model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<% @members.each do |member| %>
+  <h2><%= member.name %>'s cars:</h2>
+
+<ul> 
+<% if Car.where(member_id: member.id).size < 1 %>
+    <li>(None)</li>
+  <%end%>
+  <% Car.where(member_id: member.id).each do |car| %>
+   <li><%=car.model%></li>
+  <%end%>
+  <% end %>
+</ul>
+<ul>
+<h2> No one cars: </h2>
+
+  <% Car.where(member_id: nil).each do |c| %>
+
+  <li><%= c.model %></li>
+
+
+
+<% end %>
+</ul> --!>

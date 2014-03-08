@@ -4,7 +4,8 @@
   <% @teams.each do |team| %>
     <li>
       <a href="/teams/<%= team.name %>">
-        <%= team.name %>
+      <%= team.team_id.name %>
+        is on th<%= team.name %>
       </a>
     </li>
   <% end %>
