@@ -1,6 +1,11 @@
 require './davinci-sinatra.rb'
 
 get "/" do
+  @user = User.find_by(id: session[:user_id])
+if @user == nil
+  @user = User.new
+end
+
   # TODO: If there is already a user_id saved in the session...
   # TODO: ...then use it to load the @user instance variable.
   # TODO: Otherwise just start a new empty User.
@@ -9,6 +14,12 @@ get "/" do
 end
 
 post "/" do
+  @user    = User.new
+  @user.color   = params[:color]
+  @user.number  = params[:number]
+  @user.letter  = params[:letter]
+  @user.save!
+  session[:user_id] = @user
   # TODO: If there is already a user_id saved in the session...
   # TODO: ...then use it to load the @user instance variable.
   # TODO: Otherwise just start a new empty User.
@@ -24,3 +35,7 @@ post "/" do
 end
 
 # TODO: Write handler for GET /logout
+get "/logout" do
+  session.clear
+  redirect "/"
+end
