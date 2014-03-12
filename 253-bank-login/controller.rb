@@ -12,14 +12,14 @@ end
 post "/login" do
   username = params["username"]
   user = User.find_by(username: username)
-  if user == nil
-    @error = "Unknown username"
-    halt erb(:login)
-  else
-    session[:user_id] = user.id
-    redirect "accounts"
+    if user == nil
+      @error = "Unknown username"
+      halt erb(:login)
+    else
+      session[:user_id] = user.id
+      redirect "accounts"
+      end
     end
-  end
 
 get "/accounts" do
   @user = User.find_by(id: session[:user_id])
