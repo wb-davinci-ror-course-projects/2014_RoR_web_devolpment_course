@@ -16,6 +16,7 @@ post "/login" do
   # into variables.
   username = params["username"]
   password = params["password"]
+  password_confirmation = params["password_confirmation"]
  
   # Look for a row in the users table with that same username
   found_user = User.find_by(username: username)
@@ -24,25 +25,16 @@ post "/login" do
   if found_user == nil
     # Then set a message to show at the top of the page
     @error = "Unknown username"
-
-    # And render the login page again
     halt erb(:login)
-
-  # Otherwise, if the password was wrong...
-  elsif password != found_user.password
-    # Then set a message to show at the top of the page
-    @error = "Incorrect password"
-
-    # And render the login page again
-    halt erb(:login)
-
-  # Otherwise... (if the username and password was right)
-  else
-    # Save that user's id into the session so we'll have it later
-    session[:user_id] = found_user.id
-
-    # Redirect to the default page
-    redirect "/accounts"
+  end
+  
+  attempted_password = params["password"]
+  if found_user.authenticate(attempted_password) != false
+        session[:user_id] = found_user.id
+          redirect "/accounts"
+    else
+      @error = "Incorrect password"
+      halt erb(:login)
   end # End if
 end # End handler
 
