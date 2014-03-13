@@ -19,7 +19,7 @@ post "/" do
   @user.number  = params[:number]
   @user.letter  = params[:letter]
   @user.save!
-  session[:user_id] = @user
+  session[:user_id] = @user.id
   # TODO: If there is already a user_id saved in the session...
   # TODO: ...then use it to load the @user instance variable.
   # TODO: Otherwise just start a new empty User.
