@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= request.path_info %>
   <title>App</title>
+  <script src="/javascripts/add-param-labels.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
+    <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if flash[:error] != nil %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] != nil %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <%# non-block form is needed to adapt Rails form helpers to Sinatra %>
+    <%# request.path_info means POST action should be same as the GET URL %>
+    <%= form_tag request.path_info %>
 
 <%= yield %>
 
 </body>
 </html>
+
+
+  
+  

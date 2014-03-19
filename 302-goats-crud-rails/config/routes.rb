@@ -1,5 +1,16 @@
 App::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
+  
+get "/" => "main#action_home"
+
+get "/new_goat" => "main#action_new_goat"
+
+post "/new_goat" => "main#action_new_goat_post"
+
+get "/goats/:id" => "main#action_goats_id"
+
+post "/goats/:id" => "main#action_goats_id_post"
+
+# The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
