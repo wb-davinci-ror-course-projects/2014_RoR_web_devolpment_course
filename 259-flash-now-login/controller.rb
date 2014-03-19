@@ -23,7 +23,7 @@ post "/login" do
   # If no row was found for that username...
   if found_user == nil
     # Then set a message to show at the top of the page
-    @error = "Unknown username"
+    flash.now[:error] = "Unknown username"
 
     # And render the login page again
     halt erb(:login)
@@ -31,7 +31,7 @@ post "/login" do
   # Otherwise, if the password was wrong...
   elsif found_user.authenticate(password) == false
     # Then set a message to show at the top of the page
-    @error = "Incorrect password"
+    flash.now[:error] = "Incorrect password"
 
     # And render the login page again
     halt erb(:login)

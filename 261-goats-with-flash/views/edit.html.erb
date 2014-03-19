@@ -1,4 +1,8 @@
+<% if @goat.errors.size != 0 %>
+<div class="alert alert-danger">
 <%= error_messages_for @goat %>
+</div>
+<% end %>
 
 <h1>Edit or add new goat</h1>
 
