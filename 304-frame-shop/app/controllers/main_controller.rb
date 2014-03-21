@@ -23,7 +23,7 @@ def place_order
    else
     @order.total_price = @order.price
    end
-   if @order.inches > 0 
+   if @order.inches > 0
    @order.total_price = @order.total_price + @order.inches
    else
     @order.total_price = @order.total_price
