@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Frame.create! material: "Black Satin",      price: 5.30
+Frame.create! material: "Brentwood",        price: 8.60
+Frame.create! material: "Fine Bamboo",      price: 11.80
+Frame.create! material: "Town and Country", price: 6.10
+
+OrderedFrame.create! material: "Town and Country", price: 6.10, 
+hardware: true, inches: 2, frame_id: 4, total_price: 7.10

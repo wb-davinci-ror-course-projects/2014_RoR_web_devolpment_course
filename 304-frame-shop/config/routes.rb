@@ -1,4 +1,9 @@
 App::Application.routes.draw do
+  get  "/" => "main#index"
+  get  "/thank_you" => "main#thank_you"
+  post "/place_order" => "main#place_order"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

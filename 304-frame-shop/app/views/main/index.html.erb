@@ -1,0 +1,30 @@
+<%= form_tag "/place_order" %>
+
+<%= error_messages_for @order %>
+
+<table class="table">
+  <th><h1>Order a custom frame</h1></th>
+    <tr>
+      <td><b>Name of material<b></td>
+      <td><b>Base price<b></td>
+    </tr>
+     
+   <% Frame.order(:id).each do |f| %>
+    <tr>
+     
+      <td><%= radio_button_tag :id, f.id %><%= f.material %></td>
+      <td>$<%= "%.2f" %f.price %></td>
+    </tr>
+   <% end %>
+</table>
+
+<%= label_tag "inches", "Number of linear inches" %>
+<%= text_field_tag :inches %><br>
+(Add $1.00 per inch to base price)<br></br>
+
+<%= check_box_tag :hardware, true, false %>
+<%= label_tag :hardware, "Include hanging hardware?" %>
+(Add an extra $0.50 if checked)
+
+<%= submit_tag "Place order" %>
+

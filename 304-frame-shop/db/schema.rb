@@ -11,9 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140320225040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "frames", force: true do |t|
+    t.string "material"
+    t.float  "price"
+  end
+
+  create_table "ordered_frames", force: true do |t|
+    t.string  "material"
+    t.float   "price"
+    t.string  "hardware"
+    t.integer "inches"
+    t.string  "frame_id"
+    t.float   "total_price"
+  end
 
 end
