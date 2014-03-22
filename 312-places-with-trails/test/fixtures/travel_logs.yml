@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  direction: MyString
+  loc_id: 1
+  des_id: 1
+
+two:
+  direction: MyString
+  loc_id: 1
+  des_id: 1
