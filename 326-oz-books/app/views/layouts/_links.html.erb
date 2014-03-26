@@ -1,0 +1,25 @@
+<% if @book.id < 5 %>
+ <% @book = Book.find(@book.id + 1) %>
+  <div style='width: 520px; margin: 0 auto;'>
+    <div style='float:left'>
+      <h2 style='margin:0'>Continue the story with...</h2>
+        <div style='width: 250px; height: 60px; padding: 5px'>
+        <div style='float:left'>
+          <a href="/books/2">
+            <img alt="<%= @book.cover_filename %>" height="60" 
+            src="../app/assets/images/<%= @book.cover_filename %>.jpg" width="40" />
+          </a>  
+        </div>
+        <div style='width:200px; height: 60px; margin-left: 50px'>
+          <a href="/books/<%= @book.id %>">
+            <i><%= @book.title %></i>
+            <br>
+            by L. Frank Baum
+            <br>
+            #<%= @book.id %> in the Oz series
+          </a>  
+    </div>
+  </div>
+  <% else %>
+    <center> "There are no more books in the series"</center>
+<% end %>

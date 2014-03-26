@@ -3,3 +3,12 @@
 .DS_Store
 q3
 solutions
+326-oz-books/app/assets/javascripts/main.js.coffee
+326-oz-books/app/assets/stylesheets/main.css.scss
+326-oz-books/app/controllers/main_controller.rb
+326-oz-books/app/helpers/main_helper.rb
+326-oz-books/app/views/main/first.html.erb
+326-oz-books/app/views/main/index.html.erb
+326-oz-books/app/views/main/second.html.erb
+326-oz-books/test/controllers/main_controller_test.rb
+326-oz-books/test/helpers/main_helper_test.rb

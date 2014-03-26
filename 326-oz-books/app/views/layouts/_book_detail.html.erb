@@ -1,0 +1,24 @@
+<div style='float:left'>
+    <img alt="<%= @book.cover_filename %>" height="400" src="../app/assets/images/<%= @book.cover_filename %>.jpg" width="300" />
+  </div>
+    <p>
+      <b>Title</b>
+      <br>
+      <i><%= @book.title %></i>
+    </p>
+    <p>
+      #<%= @book.id %> in the Oz series
+    </p>
+    <p>
+      <b>Published</b>
+      <br>
+      <%= @book.year %> by <%= @book.publisher %>
+    </p>
+    <p>
+      <b>Plot summary</b>
+      <br>
+      <%= @book.summary %>
+   
+</div>
+
+

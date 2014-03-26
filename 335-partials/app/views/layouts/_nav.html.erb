@@ -1,0 +1,13 @@
+  <nav class='navbar navbar-static-top' role='navigation'>
+    <div style='position: absolute; top: 11px'>
+      <%= render partial: "layouts/logo" %>
+    </div>
+    
+    <ul class='nav nav-tabs'>
+      <%= render partial: "layouts/tab", locals: { label: "users" } %>
+      <%= render partial: "layouts/tab", locals: { label: "form2" } %>
+      <%= render partial: "layouts/tab", locals: { label: "form1" } %>
+      <%= render partial: "layouts/tab", locals: { label: "calendar" } %>
+      <%= render partial: "layouts/tab", locals: { label: "symbols" } %>
+    </ul>
+  </nav>
