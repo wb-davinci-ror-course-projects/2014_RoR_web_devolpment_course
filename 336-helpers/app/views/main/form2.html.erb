@@ -1,32 +1,10 @@
 <form class="form-horizontal" role="form">
 
-<div class="form-group">
-  <%= label_tag :first_name, nil, class: "col-sm-2 control-label" %>
-  <div class="col-sm-10">
-    <%= text_field_tag :first_name, "", class: "form-control col-sm-10" %>
-  </div>
-</div>
+<%= tag_helper "first_name" %>
+<%= tag_helper "email" %>
 
-<div class="form-group">
-  <%= label_tag :email, nil, class: "col-sm-2 control-label" %>
-  <div class="col-sm-10">
-    <%= text_field_tag :email, "", class: "form-control col-sm-10" %>
-  </div>
-</div>
+<%= check_helper "remember_me" %>
+<%= submit_helper %>
 
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <div class="checkbox">
-      <%= check_box_tag :remember_me %>
-      <%= label_tag :remember_me %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <%= submit_tag "Submit", class: "btn btn-primary" %>
-  </div>
-</div>
 
 </form>
