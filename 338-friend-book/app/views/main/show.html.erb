@@ -1,0 +1,28 @@
+<%= form_tag "/new_leader" do %>
+
+  <ul class="list-unstyled">
+    <% character = Person.find_by(id: session[:character_id]) %>
+      <h3><li><%= image_helper "#{character.name}" %>
+        You are logged in as <%= character.name %>. 
+        <a href="/logout">Logout</a></li>
+      </h3>
+  </ul>
+
+  <h1>Who I follow</h1>
+    <ul>
+      <% Following.where(from_person_id: character.id).each do |leader| %>
+        <% character = Person.find_by(id: leader.to_person_id) %>
+          <li><%= image_helper "#{character.name}" %><%= character.name %></li><br>
+        <% end %>
+          <li>Follow someone new <%= select_helper %> <%= submit_helper "Follow" %><li>
+    </ul>
+
+  <h1>My Followers</h1>
+    <ul>
+      <% Following.where(to_person_id: params[:id]).each do |follower| %>
+        <% character = Person.find_by(id: follower.from_person_id) %>
+          <li><%= image_helper "#{character.name}" %><%= character.name %></li>
+      <% end %>
+    </ul>
+
+<% end %>

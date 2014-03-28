@@ -1,0 +1,13 @@
+<%= form_tag "/show" do %>
+
+<h1>Login to Friend Book</h1>
+<h4> Choose your name </h4>
+<%= select_helper %><br></br>
+
+<h4><%= label_tag :password %><br>
+<%= password_field_tag :password %><br>
+(Password is the first letter of the name, uppercase)</h4>
+
+<%= submit_helper "Login" %>
+
+<% end %>
