@@ -30,7 +30,7 @@
         <%= submit_tag "Update" %>
       </td>
       <td>
-        $<%= sprintf('%.2f', line.quantity * product.price_per_item) %>
+        $<%= sprintf('%.2f', line.line_price) %>
       </td>
     </tr>
   <% end %>
@@ -54,12 +54,13 @@
 
   <%= submit_tag "Update" %>
 
-  <%
-  ship_total = @cart.ship_method.price_per_cart
+  <% @cart.ship_price_total %>
+  <!--ship_total = @cart.ship_method.price_per_cart
   @cart.cart_lines.each do |line|
-    ship_total = ship_total + line.quantity * @cart.ship_method.price_per_item
-  end
-  %>
+  
+  ship_total = ship_total + line.quantity * @cart.ship_method.price_per_item
+  end--!>
+ 
 
   Shipping total is:
   $<%= sprintf('%.2f', ship_total) %>

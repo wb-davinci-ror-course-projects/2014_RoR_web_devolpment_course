@@ -10,6 +10,7 @@
     <th>Line price</th>
   </tr>
   <% @products.each do |product| %>
+    <% line = CartLine.find_by(cart_id: @cart.id, product_id: product.id) %>
     <tr>
       <td>
         <%= image_tag product.image_filename %>
@@ -21,13 +22,13 @@
         $<%= sprintf('%.2f', product.price_per_item) %>
       </td>
       <td>
-        TODO
+        <%= text_field_tag "quantity_#{product.id}", line.quantity, size: 1 %>
       </td>
       <td>
         <%= submit_tag "Update" %>
       </td>
       <td>
-        TODO
+         $<%= sprintf('%.2f', line.line_price) %>
       </td>
     </tr>
   <% end %>
@@ -52,12 +53,13 @@
   <%= submit_tag "Update" %>
 
   Shipping total is:
-  TODO
+ $<%= sprintf('%.2f', @cart.ship_price) %>
+  
 </p>
 
 <p>
   <b>Total price</b>
-  TODO
+  $<%= sprintf('%.2f', @cart.total_price) %>
 </p>
 
 <% end %>

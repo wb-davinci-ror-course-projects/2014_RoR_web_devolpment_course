@@ -21,9 +21,18 @@ class MainController < ApplicationController
   end
 
   def index_post
-    # TODO: load @cart variable
-    # TODO: Update quantities from params
-    # TODO: Update ship_method_id
+    @cart = Cart.find_by(id: session[:cart_id])
+    
+    Product.all.each do |p|
+      quantity = params["quantity_#{p.id}"]
+      line = CartLine.find_by(cart_id: @cart.id, product_id: p.id)
+      line.quantity = quantity
+      line.save!
+      end
+
+    @cart.ship_method_id = params['ship_method_id']
+    @cart.save!
+
 
     redirect_to "/" and return
   end
