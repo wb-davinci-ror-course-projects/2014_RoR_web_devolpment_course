@@ -1,25 +1,25 @@
-class AdminController < ApplicationController
+class ChangesController < ApplicationController
 
   before_filter do
     if session[:admin_id] != nil
       @admin = Admin.where(id: session[:admin_id]).first
     else
       flash[:error] = "You must be logged in to see that page."
-      redirect_to "/sessions/login" and return
+      redirect_to "/changes" and return
     end
   end
 
-  def list_houses
+  def index
     @houses = House.order(:id)
-    render :list_houses and return
+    render :index and return
   end
 
-  def edit_house
+  def edit
     @house = House.where(id: params[:id]).first
     render :edit_house and return
   end
 
-  def edit_house_post
+  def update
     @house                 = House.find(params[:id])
     @house.address         = params[:address]
     @house.city            = params[:city]
@@ -31,18 +31,18 @@ class AdminController < ApplicationController
     @house.image_url       = params[:image_url]
 
     if @house.save
-      redirect_to "/admin/list_houses" and return
+      redirect_to "/changes" and return
     else
       render :edit_house and return
     end
   end
 
-  def new_house
+  def new
     @house = House.new
-    render :new_house and return
+    render :new and return
   end
 
-  def new_house_post
+  def create
     @house                 = House.new
     @house.address         = params[:address]
     @house.city            = params[:city]
@@ -54,16 +54,16 @@ class AdminController < ApplicationController
     @house.image_url       = params[:image_url]
 
     if @house.save
-      redirect_to "/admin/list_houses" and return
+      redirect_to "/changes" and return
     else
-      render :new_house and return
+      render :new and return
     end
   end
 
-  def delete_house
+  def destroy
     house = House.find(params[:id])
     house.destroy
-    redirect_to "/admin/list_houses"
+    redirect_to "/changes"
   end
 
 end

@@ -14,16 +14,17 @@
       <td><%= house.address %></td>
       <td><%= house.price %></td>
       <td>
-        <a href="/admin/edit_house/<%= house.id %>">Edit</a>
+        <a href="/changes/<%= house.id %>/edit">Edit</a>
       </td>
       <td>
-        <a href="/admin/delete_house/<%= house.id %>">Delete</a>
+        <a href="/changes/<%= house.id %>" data-method="delete" data-confirm=
+        "Are you sure?">Delete</a>
       </td>
     </tr>
   <% end %>
   <tr>
     <td colspan="5">
-      <a href="/admin/new_house">Add new house</a>
+      <a href="/changes/new">Add new house</a>
     </td>
   </tr>
 </table>

@@ -1,15 +1,16 @@
 App::Application.routes.draw do
-  get  "/"               => "main#root"
+  get  "/"               => "main#ads"
 
-  get  "/list_ads"       => "main#list_ads"
+  get  "/ads"            => "main#ads"
 
-  get  "/new_ad"         => "main#new_ad"
-  post "/new_ad"         => "main#new_ad_post"
+  post "/ads"             => "main#create"
+  
+  get  "/ads/new"         => "main#new"
+  
+  get  "/ads/:id"        => "main#show"
 
-  get  "/show_ad/:id"    => "main#show_ad"
+  get  "/ads/:id/edit"    => "main#edit"
+  put "/ads/:id"          => "main#update"
 
-  get  "/edit_ad/:id"    => "main#edit_ad"
-  post "/edit_ad/:id"    => "main#edit_ad_post"
-
-  get  "/destroy_ad/:id" => "main#destroy_ad"
+  delete  "/ads/:id"         => "main#destroy"
 end

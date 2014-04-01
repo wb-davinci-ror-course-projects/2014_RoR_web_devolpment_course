@@ -1,0 +1,91 @@
+INDEX VIEW
+<%= form_tag "/" do %>
+  <% @products.each do |product| %>
+    <% line = CartLine.find_by(cart_id: @cart.id, product_id: product.id) %>
+    <tr><td><%= image_tag product.image_filename %></td>
+      <td><%= product.name %></td>
+      <td>$<%= sprintf('%.2f', product.price_per_item) %></td>
+      <td><%= text_field_tag "quantity_#{product.id}", line.quantity, size: 1 %></td>
+      <td><%= submit_tag "Update" %></td>
+      <td>$<%= sprintf('%.2f', line.line_price) %></td></tr>
+  <% end %>
+<br clear="both">
+<p><b>Choose shipping method:</b><br>
+  <% @ship_methods.each do |ship_method| %>
+    <%= radio_button_tag :ship_method_id, ship_method.id,
+      @cart.ship_method_id == ship_method.id %>
+    <%= ship_method.name %> 
+    $<%= sprintf('%.2f', ship_method.price_per_cart) %>
+    + $<%= sprintf('%.2f', ship_method.price_per_item) %> each item<br>
+  <% end %>
+  <%= submit_tag "Update" %>
+  Shipping total is:
+ $<%= sprintf('%.2f', @cart.ship_price) %></p>
+<p><b>Total price</b>
+  $<%= sprintf('%.2f', @cart.total_price) %></p>
+<% end %>
+--------------------------------------------------------------------------------
+MAIN CONTROLLER
+class MainController < ApplicationController
+  def index
+    @cart = Cart.find_by(id: session[:cart_id])
+    if @cart == nil
+      @cart = Cart.new
+      @cart.ship_method_id = ShipMethod.first.id
+      @cart.save!
+      session[:cart_id] = @cart.id
+      Product.all.each do |product|
+        CartLine.create! cart_id: @cart.id, product_id: product.id, quantity: 0
+      end
+    end
+    @products = Product.order("name")
+    @ship_methods = ShipMethod.order(:id)
+    render :index and return
+  end
+
+  def index_post
+    @cart = Cart.find_by(id: session[:cart_id])
+    Product.all.each do |p|
+      quantity = params["quantity_#{p.id}"]
+      line = CartLine.find_by(cart_id: @cart.id, product_id: p.id)
+      line.quantity = quantity
+      line.save!
+      end
+    @cart.ship_method_id = params['ship_method_id']
+    @cart.save!
+    redirect_to "/" and return
+  end
+end
+--------------------------------------------------------------------------------
+MODEL FILES
+class CartLine < ActiveRecord::Base
+  belongs_to :product
+  
+  def line_price
+    self.product.price_per_item * self.quantity
+  end
+  
+end
+------
+class Cart < ActiveRecord::Base
+  belongs_to :ship_method
+  has_many :cart_lines
+
+  def ship_price
+    total = self.ship_method.price_per_cart
+    self.cart_lines.each do |line|
+      total = total + self.ship_method.price_per_item * line.quantity
+    end
+    total
+  end
+
+  def total_price
+    total = 0.00
+    self.cart_lines.each do |line|
+      total += line.line_price
+    end
+    total += self.ship_price
+    total
+  end
+end
+
