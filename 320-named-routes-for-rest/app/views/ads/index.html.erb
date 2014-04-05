@@ -16,10 +16,11 @@
       <tr>
         <td><%= ad.company_name %></td>
         <td><%= ad.duration %></td>
-        <td><a href="/ads/<%= ad.id %>">Show</a></td>
-        <td><a href="/ads/<%= ad.id %>/edit">Edit</a></td>
-        <td><a href="/ads/<%= ad.id %>" data-method="delete"
-               data-confirm="Are you sure?">Destroy</a></td>
+        <td><%= link_to "Show", ad %></td>
+        <td><%= link_to "Edit", ad %></td>
+        <td><%= link_to "Destroy", ad, "data-confirm" =>
+            "Are you sure?", "data-method" => "delete" %></td> 
+ 
       </tr>
     <% end %>
   </tbody>

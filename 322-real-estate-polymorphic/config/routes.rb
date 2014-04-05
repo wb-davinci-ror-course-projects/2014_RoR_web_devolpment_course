@@ -1,19 +1,21 @@
 App::Application.routes.draw do
 
   get  "/" => "houses#root"
-
-  resources "houses", path: "/houses", controller: "houses",
-    only: [:index, :show]
+  get "/houses"   =>  "houses#index"
+  get "/houses/:id" => "houses#show"
+  
+#   resources "houses", path: "/houses", controller: "houses",
+#     only: [:index, :show]
   # The above resources lines expand to:
   #   get  "/houses"     => "houses#index"
   #   get  "/houses/:id" => "houses#show"
 
-  resources "sessions", path: "/sessions", controller: "sessions",
-    only: [:new, :create, :destroy]
+ #  resources "sessions", path: "/sessions", controller: "sessions",
+#     only: [:new, :create, :destroy]
   # The above resources lines expand to:
-  #   get    "/sessions/new" => "sessions#new"
-  #   post   "/sessions"     => "sessions#create"
-  #   delete "/sessions"     => "sessions#destroy"
+   get    "/sessions/new" => "sessions#new",         as: "login"
+   post   "/sessions"     => "sessions#create"
+   delete "/sessions"     => "sessions#destroy"
 
   resources "admin_houses", path: "/admin_houses", controller: "admin_houses",
     only: [:index, :new, :create, :edit, :update, :destroy]

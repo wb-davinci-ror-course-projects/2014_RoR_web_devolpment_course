@@ -16,9 +16,9 @@
 
 <% if @user != nil %>
   <div style='background-color:#ccc; padding: 10px;'>
-    <a href="/accounts">accounts</a>
-    <a href="/location">location</a>
-    <a href="/rates">rates</a>
+    <%= link_to "accounts", accounts1_path %>
+    <%= link_to "location", location1_path %>
+    <%= link_to "rates", rates1_path %>
     <br>
   
     Logged in as <%= @user.username %>;
