@@ -1,10 +1,25 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
   def index
     @customers = Customer.all
+  end
+  
+  def customer_adjust
+    Customer.all.each do |customer|
+    customer.fname = params["fname_#{customer.id}"]
+    customer.lname = params["lname_#{customer.id}"]
+    customer.save!
+    end
+    if params["new_fname"] != ""
+      customer = Customer.new
+      customer.fname = params["new_fname"]
+      customer.lname = params["new_lname"]
+      customer.save!
+    end
+    redirect_to "/" and return
   end
 
   # GET /customers/1
@@ -64,7 +79,11 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params[:id])
+      if params[:id].to_i > 0
+        @customer = Customer.find(params[:id])
+      else
+        @customer = Customer.new
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

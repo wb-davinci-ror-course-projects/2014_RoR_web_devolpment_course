@@ -1,5 +1,8 @@
 App::Application.routes.draw do
   resources :customers
+get "/" => "customers#index"
+
+post "/customer_adjust" => "customers#customer_adjust", as: "customer_adjust"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
