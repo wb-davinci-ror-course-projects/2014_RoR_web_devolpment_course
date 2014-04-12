@@ -1,0 +1,23 @@
+<%= form_tag reset_password1_path, method: "PUT" do %>
+  
+  
+  <h1>Enter new password</h1>
+
+  
+
+    <p>
+      <%= label_tag :password %><br>
+      <%= password_field_tag :password %>
+    </p>
+  
+    <p>
+      <%= label_tag :password_confirmation %><br>
+      <%= password_field_tag :password_confirmation %>
+    </p>
+  
+    <p>
+      <%= submit_tag "Update password" %>
+    </p>
+  
+<% end %>
+

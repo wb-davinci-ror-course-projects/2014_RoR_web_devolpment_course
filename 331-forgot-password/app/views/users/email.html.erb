@@ -1,0 +1,14 @@
+<%= form_tag send_email_path, method: "PUT" do %>
+  
+  
+  <h1>Enter new password</h1>
+  
+  <label for="email">Please submit your e-mail address. </label>
+    <%= text_field_tag "email" %>
+    <br>
+
+      <%= submit_tag "Submit"%>
+    </p>
+  
+<% end %>
+

@@ -9,4 +9,8 @@ App::Application.routes.draw do
     as: "verify_email"
   post "/resend_verification_email" => "users#resend_verification_email",
     as: "resend_verification_email"
+  get "/email" => "users#email", as: "email"
+  put "/send" => "users#send_email", as: "send_email"
+  get "/reset/:user_id/:token"    => "users#reset", as: "reset_password"
+  put "/reset"  => "users#reset_password", as: "reset_password1"
 end

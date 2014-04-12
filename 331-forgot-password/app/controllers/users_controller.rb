@@ -79,9 +79,45 @@ class UsersController < ApplicationController
       to:      @logged_in_user.email,
       subject: "Thanks for registering",
       body:    "Please click the following link to verify your email address:
-#{verify_email_url(@logged_in_user.id, @logged_in_user.email_verification_token)}"
+      #{verify_email_url(@logged_in_user.id, @logged_in_user.email_verification_token)}"
     )
     flash[:success] = "Verification email sent."
     redirect_to params[:afterwards_go_to]
   end
+  
+  def email
+    render :email and return
+  end
+  
+  def send_email
+    @user = User.find_by(email: params[:email])
+    session[:email] = params[:email]
+    link = reset_password_url(@user.id, @user.email_verification_token)
+      Pony.mail(
+        to:        @user.email,
+        subject:   "Reset password",
+        body:      "Please click the following link to update your password: #{link}",
+        html_body: "Please click <a href='#{link}'>here</a> to verify your email address."
+      )
+    flash.now[:success] = "thank you, now please check click the link in the email just sent"
+    render :email and return
+  end
+  
+  def reset
+    render :reset and return
+  end
+  
+  def reset_password
+    @user = User.find_by(email: session[:email])
+    @user.password                 = params[:password]
+    @user.password_confirmation    = params[:password_confirmation]
+    if @user.save == true
+      flash.now[:success] = "Your password has been updated"
+      redirect_to "/" and return
+    else
+      flash[:error] = "the passwords you entered don't match"
+      render :reset and return
+    end
+  end
+  
 end
