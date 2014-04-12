@@ -4,4 +4,6 @@ App::Application.routes.draw do
   resources :users, only: ["index", "new", "create"]
   post "/users/login"  => "users#login",  as: "login"
   post "/users/logout" => "users#logout", as: "logout"
+  
 end
+ 

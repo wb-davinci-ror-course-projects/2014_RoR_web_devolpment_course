@@ -21,10 +21,23 @@ class UsersController < ApplicationController
     if @user.save
       session[:logged_in_user_id] = @user.id
       flash[:success] = "Your account has been created"
+      Pony.mail(
+        to:        params[:email],
+        subject:   "Thanks for registering",
+        body:      "This is the body.",
+        html_body: "This is the body in <b>HTML</b>.")
       redirect_to users_path and return
     else
       render :new and return
     end
+  end
+  
+  def verify_email
+    user = User.find(params[:user_id])
+    # params[:token]
+    # user.was_email_verified = true
+    # user.save!
+    raise
   end
 
   def login
