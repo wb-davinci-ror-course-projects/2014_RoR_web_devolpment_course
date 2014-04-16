@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user.password              = params[:password]
     @user.password_confirmation = params[:password_confirmation]
     @user.email_verification_token = rand(10 ** 8)
-    if @user.save
+    if @user.save == true
       session[:logged_in_user_id] = @user.id
       flash[:success] = "Your account has been created"
       

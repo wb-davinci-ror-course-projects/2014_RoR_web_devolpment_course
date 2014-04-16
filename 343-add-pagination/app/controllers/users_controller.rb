@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(:id)
+    @users = User.order(:id).page(params[:page]).per_page(5)
     render :index and return
   end
 

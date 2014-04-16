@@ -1,4 +1,10 @@
 App::Application.routes.draw do
+
+get  "/"                => "main#form",       as: "form"
+post "/upload"          => "main#upload",     as: "upload"
+get  "/images/:id.:ext" => "main#image_data", as: "image_data"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

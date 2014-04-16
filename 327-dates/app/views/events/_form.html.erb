@@ -4,6 +4,10 @@
     <%= text_field_tag :name, event.name %>
   </p>
   <p>
+  
+  <%= select_date @event.start_date, prefix: "start_date", prompt: true %>
     <%= submit_tag "Save" %>
   </p>
+  
+  <%= text_field_tag :end_date, "", class: "datepicker", placeholder: "YYYY-MM-DD" %>
 <% end %>
